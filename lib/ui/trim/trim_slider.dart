@@ -23,6 +23,7 @@ class TrimSlider extends StatefulWidget {
     this.hasHaptic = true,
     this.maxViewportRatio = 2.5,
     this.scrollController,
+    this.backgroundColor,
   });
 
   /// The [controller] param is mandatory so every change in the controller settings will propagate in the trim slider view
@@ -61,8 +62,11 @@ class TrimSlider extends StatefulWidget {
   /// Defaults to `2.5`
   final double maxViewportRatio;
 
-  //// The [scrollController] param specifies the scroll controller to use for the trim slider view
+  /// The [scrollController] param specifies the scroll controller to use for the trim slider view
   final ScrollController? scrollController;
+
+  /// The [backgroundColor] param specifies the background color of the trim slider view
+  final Color? backgroundColor;
 
   @override
   State<TrimSlider> createState() => _TrimSliderState();
@@ -593,27 +597,32 @@ class _TrimSliderState extends State<TrimSlider>
                 controller: _scrollController,
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: _horizontalMargin),
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(
-                          widget.controller.trimStyle.borderRadius,
-                        ),
-                        child: SizedBox(
-                          height: widget.height,
-                          width: _fullLayout.width,
-                          child: ThumbnailSlider(
-                            controller: widget.controller,
+                child: Container(
+                  color: widget.backgroundColor,
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: _horizontalMargin),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                            widget.controller.trimStyle.borderRadius,
+                          ),
+                          child: SizedBox(
                             height: widget.height,
-                            quality: widget.quality,
+                            width: _fullLayout.width,
+                            child: ThumbnailSlider(
+                              controller: widget.controller,
+                              height: widget.height,
+                              quality: widget.quality,
+                            ),
                           ),
                         ),
-                      ),
-                      if (widget.child != null)
-                        SizedBox(width: _fullLayout.width, child: widget.child)
-                    ],
+                        if (widget.child != null)
+                          SizedBox(
+                              width: _fullLayout.width, child: widget.child)
+                      ],
+                    ),
                   ),
                 ),
               ),

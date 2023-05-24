@@ -1,3 +1,7 @@
+## 2.4.1
+
+- Add `backgroundColor` in `TrimSlider` for customizing background slider color.
+
 ## 2.4.0
 
 - Fix update TrimSlider trim values from controller [#141](https://github.com/LeGoffMael/video_editor/pull/141)
@@ -26,6 +30,7 @@ await controller.extractCover(format: 'jpg', onCompleted: (_) {});
 ```
 
 After:
+
 ```dart
 await controller.exportVideo(
   format: VideoExportFormat.mp4, // or const VideoExportFormat('mp4')
@@ -116,9 +121,9 @@ Check [migration guide](https://github.com/LeGoffMael/video_editor/wiki/Migratio
 ## 1.3.0
 
 - [BREAKING CHANGE]
-    - In TrimTimeline, `secondGap` param is no more nullable
-    - In TrimSliderStyle, positionlineWidth param is renamed `positionLineWidth`
-    - In CoverSelection, nbSelection param is renamed `quantity`
+  - In TrimTimeline, `secondGap` param is no more nullable
+  - In TrimSliderStyle, positionlineWidth param is renamed `positionLineWidth`
+  - In CoverSelection, nbSelection param is renamed `quantity`
 - Improve package documentation [#84](https://github.com/LeGoffMael/video_editor/issues/84)
 - Switch from LTS FFmpeg package to Main release [#81](https://github.com/LeGoffMael/video_editor/issues/81) by [@adigladi](https://github.com/adigladi)
 
@@ -170,7 +175,6 @@ Check [migration guide](https://github.com/LeGoffMael/video_editor/wiki/Migratio
 - Export video cover [#29](https://github.com/LeGoffMael/video_editor/pull/29)
 - Trim slider timeline [#28](https://github.com/LeGoffMael/video_editor/pull/28)
 - New smooth trimmer when video durarion > maxDuration [#27](https://github.com/LeGoffMael/video_editor/pull/27)
-
 
 ## 1.1.0
 
